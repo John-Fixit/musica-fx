@@ -21,7 +21,7 @@ export default {
             this.new_music = response?.data;
         },
         mouseEntered(){
-            
+
         }
     }
 }
@@ -53,7 +53,7 @@ export default {
 <style>
 .audio_tag{
     height: 30px;
-    width: 80%;
+    width: 95%;
 }
 
 </style>
