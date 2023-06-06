@@ -1,3 +1,31 @@
+
+<script>
+import axios from 'axios';
+import { store } from '../stores/store';
+export default {
+    name: 'New-music',
+    data(){
+        return {
+            new_music: []
+        }
+    },
+    mounted(){
+        this.getMusic();
+    },
+    methods: {
+        async getMusic(){
+            const url_new = 'https://musica-api.up.railway.app/new';     
+            const query = await axios.get(url_new);
+            const response = await query;
+            console.log(response?.data)
+            this.new_music = response?.data;
+        },
+        mouseEntered(){
+            
+        }
+    }
+}
+</script>
 <template>
     <div class="col-sm-11 p-3 shadow mx-auto">
         <div v-if="new_music.length">
@@ -6,9 +34,9 @@
                     <div class="card h-100" :on-mouseenter="mouseEntered()">
                         <img v-bind:src=music.cover alt="cover image" class="card-img-top h-75">
                         <div class="card-body">
-                            <h4 class="card-title">{{ music.title }}</h4>
+                            <h5 class="card-title">Title: {{ music.title }}</h5>
                             <audio :src=music.audio controls class="mx-auto audio_tag"></audio>
-                            <p>{{ music.artist }}</p>
+                            <p>Artist: {{ music.artist }}</p>
                         </div>
                     </div>
                 </div>
@@ -21,34 +49,6 @@
         </div>
     </div>
 </template>
-
-<script>
-import axios from 'axios';
-export default {
-    name: 'Musica',
-    data(){
-        return {
-            new_music: [],
-            
-        }
-    },
-    mounted(){
-        this.getMusic();
-    },
-    methods: {
-        async getMusic(){
-            let url_new = 'https://musica-api.up.railway.app/new';        
-            let query = await axios.get(url_new);
-            let response = await query;
-            // console.log(response);
-            this.new_music = response.data;
-        },
-        mouseEntered(){
-
-        }
-    }
-}
-</script>
 
 <style>
 .audio_tag{

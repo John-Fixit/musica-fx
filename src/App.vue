@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Navbar from './views/Navbar.vue'
-import Musica from './views/Musica.vue'
+import Musica from './views/NewMusic.vue'
 export default({
   components: {
     Navbar
